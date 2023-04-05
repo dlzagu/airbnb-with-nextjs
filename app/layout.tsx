@@ -9,6 +9,7 @@ import ClientOnly from './components/ClientOnly'
 import './globals.css'
 import ToasterProvider from './providers/ToasterProvider'
 import getCurrentUser from './actions/getCurrentUser'
+import RentModal from './components/modals/RentModal'
 
 export const metadata = {
   title: 'Create Next App',
@@ -33,6 +34,7 @@ export default async function RootLayout({
           <ToasterProvider />
           <LoginModal />
           <RegisterModal />
+          <RentModal />
           <SearchModal />
           <Navbar currentUser={currentUser} />
         </ClientOnly>
