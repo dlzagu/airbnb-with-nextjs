@@ -2,25 +2,22 @@
 
 import { useCallback, useState } from 'react'
 import { toast } from 'react-hot-toast'
-// import { signIn } from 'next-auth/react';
+import { signIn } from 'next-auth/react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { FcGoogle } from 'react-icons/fc'
 import { AiFillGithub } from 'react-icons/ai'
+import { useRouter } from 'next/navigation'
 
 import useRegisterModal from '@/app/hooks/useRegisterModal'
 import useLoginModal from '@/app/hooks/useLoginModal'
-// import useCurrentUser from "@/app/hooks/useCurrentUser";
 
+import Modal from './Modal'
 import Input from '../inputs/Input'
-import Modal from '../Modal'
 import Heading from '../Heading'
 import Button from '../Button'
 
 const LoginModal = () => {
-  // const { mutate: mutateCurrentUser } = useCurrentUser();
-
-  const currentUser: any = null
-
+  const router = useRouter()
   const loginModal = useLoginModal()
   const registerModal = useRegisterModal()
   const [isLoading, setIsLoading] = useState(false)
@@ -39,23 +36,22 @@ const LoginModal = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true)
 
-    // signIn('credentials', {
-    //   ...data,
-    //   redirect: false
-    // })
-    // .then((callback) => {
-    //   setIsLoading(false);
+    signIn('credentials', {
+      ...data,
+      redirect: false,
+    }).then((callback) => {
+      setIsLoading(false)
 
-    //   if (callback?.ok) {
-    //     toast.success('Logged in');
-    //     mutateCurrentUser();
-    //     loginModal.onClose();
-    //   }
+      if (callback?.ok) {
+        toast.success('Logged in')
+        router.refresh()
+        loginModal.onClose()
+      }
 
-    //   if (callback?.error) {
-    //     toast.error(callback.error);
-    //   }
-    // });
+      if (callback?.error) {
+        toast.error(callback.error)
+      }
+    })
   }
 
   const onToggle = useCallback(() => {
@@ -93,15 +89,18 @@ const LoginModal = () => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        // onClick={() => signIn('google')}
+        onClick={() => signIn('google')}
       />
       <Button
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        // onClick={() => signIn('github')}
+        onClick={() => signIn('github')}
       />
-      <div className="text-neutral-500 text-center mt-4 font-light">
+      <div
+        className="
+      text-neutral-500 text-center mt-4 font-light"
+      >
         <p>
           First time using Airbnb?
           <span

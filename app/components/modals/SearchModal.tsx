@@ -9,7 +9,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 
 import useSearchModal from '@/app/hooks/useSearchModal'
 
-import Modal from '../Modal'
+import Modal from './Modal'
 import Calendar from '../inputs/Calendar'
 import Counter from '../inputs/Counter'
 import CountrySelect, { CountrySelectValue } from '../inputs/CountrySelect'
