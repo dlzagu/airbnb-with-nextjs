@@ -11,69 +11,75 @@ export interface IListingsParams {
   category?: string
 }
 
-export default async function getListings(params: IListingsParams) {
-  try {
-    const {
-      userId,
-      roomCount,
-      guestCount,
-      bathroomCount,
-      locationValue,
-      startDate,
-      endDate,
-      category,
-    } = params
+const createQuery = (params: IListingsParams) => {
+  const {
+    userId,
+    roomCount,
+    guestCount,
+    bathroomCount,
+    locationValue,
+    startDate,
+    endDate,
+    category,
+  } = params
 
-    let query: any = {}
+  let query: any = {}
 
-    if (userId) {
-      query.userId = userId
+  if (userId) {
+    query.userId = userId
+  }
+
+  if (category) {
+    query.category = category
+  }
+
+  if (roomCount) {
+    query.roomCount = {
+      gte: roomCount,
     }
+  }
 
-    if (category) {
-      query.category = category
+  if (guestCount) {
+    query.guestCount = {
+      gte: guestCount,
     }
+  }
 
-    if (roomCount) {
-      query.roomCount = {
-        gte: +roomCount,
-      }
+  if (bathroomCount) {
+    query.bathroomCount = {
+      gte: bathroomCount,
     }
+  }
 
-    if (guestCount) {
-      query.guestCount = {
-        gte: +guestCount,
-      }
-    }
+  if (locationValue) {
+    query.locationValue = locationValue
+  }
 
-    if (bathroomCount) {
-      query.bathroomCount = {
-        gte: +bathroomCount,
-      }
-    }
-
-    if (locationValue) {
-      query.locationValue = locationValue
-    }
-
-    if (startDate && endDate) {
-      query.NOT = {
-        reservations: {
-          some: {
-            OR: [
-              {
-                endDate: { gte: startDate },
-                startDate: { lte: startDate },
-              },
-              {
-                startDate: { lte: endDate },
-                endDate: { gte: endDate },
-              },
-            ],
-          },
+  if (startDate && endDate) {
+    query.NOT = {
+      reservations: {
+        some: {
+          OR: [
+            {
+              endDate: { gte: startDate },
+              startDate: { lte: startDate },
+            },
+            {
+              startDate: { lte: endDate },
+              endDate: { gte: endDate },
+            },
+          ],
         },
-      }
+      },
     }
+  }
+
+  return query
+}
+
+const getListings = async (params: IListingsParams) => {
+  try {
+    const query = createQuery(params)
 
     const listings = await prisma.listing.findMany({
       where: query,
@@ -82,13 +88,13 @@ export default async function getListings(params: IListingsParams) {
       },
     })
 
-    const safeListings = listings.map((listing) => ({
+    return listings.map((listing) => ({
       ...listing,
       createdAt: listing.createdAt.toISOString(),
     }))
-
-    return safeListings
   } catch (error: any) {
     throw new Error(error)
   }
 }
+
+export default getListings
