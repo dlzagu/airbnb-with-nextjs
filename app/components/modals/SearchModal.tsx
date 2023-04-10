@@ -59,7 +59,14 @@ const SearchModal = () => {
       return onNext()
     }
 
+    let currentQuery = {}
+
+    if (params) {
+      currentQuery = qs.parse(params.toString())
+    }
+
     const updatedQuery: any = {
+      ...currentQuery,
       locationValue: location?.value,
       guestCount,
       roomCount,
@@ -77,14 +84,7 @@ const SearchModal = () => {
     const url = qs.stringifyUrl(
       {
         url: '/',
-        query: {
-          locationValue: params.get('locationValue'),
-          roomCount: params.get('roomCount'),
-          guestCount: params.get('guestCount'),
-          bathroomCount: params.get('bathroomCount'),
-          category: params.get('category'),
-          ...updatedQuery,
-        },
+        query: updatedQuery,
       },
       { skipNull: true }
     )
@@ -171,7 +171,6 @@ const SearchModal = () => {
         <hr />
         <Counter
           onChange={(value) => {
-            console.log({ value })
             setBathroomCount(value)
           }}
           value={bathroomCount}
