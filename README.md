@@ -1,38 +1,98 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# airbnb Clone
 
-## Getting Started
+- Demo: <https://airbnb-with-nextjs-gamma.vercel.app/>
 
-First, run the development server:
+### Project goal
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+```shell
+
+이 프로젝트는 nextjs13을 통해 Airbnb를 단순화한 클론 코딩입니다.
+
+저는 이 프로젝트를 통해 Next.js를 비롯한 React 프레임워크와 Tailwind CSS 같은 CSS 프레임워크, React Hook Form과 Zustand 같은 상태 관리 라이브러리, MongoDB와 Prisma 같은 데이터베이스 도구를 사용해 보았습니다.
+또한, NextAuth를 이용하여 구글 및 깃허브를 통한 인증 시스템을 구현하였습니다.
+
+저의 목표는 이 프로젝트를 통해 다양한 기술 스택을 경험하고, 이를 활용하여 웹 개발을 더욱 효율적으로 수행할 수 있는 능력을 키우는 것입니다. 또한, 이 프로젝트를 통해 기술적으로 성장하며, 후에 다른 프로젝트에 적용하는 것이 궁극적인 목표 입니다.
+
+이 프로젝트를 진행하면서 공부하고 느낀점을 블로그에 작성하도록 하겠습니다 !
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### TODO's
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [x] Tailwind design
+- [x] Tailwind animations and effects
+- [x] Full responsiveness
+- [x] Credential authentication
+- [x] Google authentication
+- [x] Github authentication
+- [x] Image upload using Cloudinary CDN
+- [x] Client form validation and handling using react-hook-form
+- [x] Server error handling using react-toast
+- [x] Calendars with react-date-range
+- [x] Page loading state
+- [x] Page empty state
+- [x] Booking / Reservation system
+- [x] Guest reservation cancellation
+- [x] Owner reservation cancellation
+- [x] Creation and deletion of properties
+- [x] Pricing calculation
+- [x] Advanced search algorithm by category, date range, map location, number of guests, rooms and bathrooms
+- [x] For example we will filter out properties that have a reservation in your desired date range to travel
+- [x] Favorites system
+- [x] Shareable URL filters
+- [x] Lets say you select a category, location and date range, you will be able to share URL with a logged out friend in another browser and they will see the same results
+- [x] How to write POST and DELETE routes in route handlers (app/api)
+- [x] How to fetch data in server react components by directly accessing database (WITHOUT API! like Magic!)
+- [x] How to handle files like error.tsx and loading.tsx which are new Next 13 templating files to unify loading and error handling
+- [x] How to handle relations between Server and Child components!
+- [x] Implement Not Found page styles
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Tools used
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- NextJs 13
+- Axios
+- React
+- React Hook Form
+- Tailwind
+- NextAuth
+- Zustand
+- MongoDB
+- Prisma
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Install packages
 
-## Learn More
+```shell
+npm i
 
-To learn more about Next.js, take a look at the following resources:
+or
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+yarn
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Setup .env file
 
-## Deploy on Vercel
+```js
+DATABASE_URL=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GITHUB_ID=
+GITHUB_SECRET=
+NEXTAUTH_SECRET=
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Setup Prisma
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```shell
+npx prisma db push
+
+```
+
+### Start the app
+
+```shell
+npm run dev
+
+or
+
+yarn dev
+```
