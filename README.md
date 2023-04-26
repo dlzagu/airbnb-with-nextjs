@@ -4,8 +4,6 @@
 
 ### Project goal
 
-```shell
-
 이 프로젝트는 nextjs13을 통해 Airbnb를 단순화한 클론 코딩입니다.
 
 저는 이 프로젝트를 통해 Next.js를 비롯한 React 프레임워크와 Tailwind CSS 같은 CSS 프레임워크, React Hook Form과 Zustand 같은 상태 관리 라이브러리, MongoDB와 Prisma 같은 데이터베이스 도구를 사용해 보았습니다.
@@ -13,9 +11,18 @@
 
 저의 목표는 이 프로젝트를 통해 다양한 기술 스택을 경험하고, 이를 활용하여 웹 개발을 더욱 효율적으로 수행할 수 있는 능력을 키우는 것입니다. 또한, 이 프로젝트를 통해 기술적으로 성장하며, 후에 다른 프로젝트에 적용하는 것이 궁극적인 목표 입니다.
 
-이 프로젝트를 진행하면서 공부하고 느낀점을 블로그에 작성하도록 하겠습니다 !
 
-```
+### Study
+
+이 프로젝트를 진행하면서 새롭게 알게 된 nextjs13 지식을 개인 블로그에 기록해보았습니다. 
+
+1. Nextjs13의 app폴더 도입 - [Nextjs13의 app [Nextjs]](https://velog.io/@dlzagu/Nextjs13-%ED%8F%B4%EB%8D%94%EA%B5%AC%EC%A1%B0-Nextjs)
+
+2. CSR과 SSR 그리고 Nextjs13의 Pre-rendering 장점 - [Nextjs13의 Pre-rendering의 장점](https://velog.io/@dlzagu/Nextjs13%EC%9D%98-Pre-rendering%EC%9D%98-%EC%9E%A5%EC%A0%90Nextjs)
+
+3. 신세계를 경험한 next auth - [next-auth 란? [nextjs]](https://velog.io/@dlzagu/next-auth-%EB%9E%80-nextjs)
+
+4. Nextjs에서 API 구현하는 가장 쉬운 방법 Prisma! - [Next.js에서 Prisma사용해 간단하게 API 구현하기 [Nextjs]](https://velog.io/@dlzagu/Next.js%EC%97%90%EC%84%9C-Prisma%EC%82%AC%EC%9A%A9%ED%95%B4-%EA%B0%84%EB%8B%A8%ED%95%98%EA%B2%8C-API-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-Nextjs)
 
 ### TODO's
 
